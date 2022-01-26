@@ -28,27 +28,13 @@ class BooksApp extends React.Component {
           .concat(selectedBook)
       }));
     })
-    /*
-      BooksAPI.update(changedBook, shelf).then(response => {
-      // set shelf for new or updated book
-      changedBook.shelf = shelf;
-      // update state with changed book
-      this.setState(prevState => ({
-        books: prevState.books
-          // remove updated book from array
-          .filter(book => book.id !== changedBook.id)
-          // add updated book to array
-          .concat(changedBook)
-      }));
-    });
-    */
   }
 
   render() {
     return (
       <div className="app">
         <Routes>
-          <Route path='/search' element={<SearchBooks />} />
+          <Route path='/search' element={<SearchBooks books={this.state.books} updateBookShelf={this.updateBookShelf}/>} />
           <Route exact path='/' element={<ListBooks books={this.state.books} updateBookShelf={this.updateBookShelf}/>} />
         </Routes>
       </div>

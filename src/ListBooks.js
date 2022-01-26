@@ -19,7 +19,7 @@ function ListBooks(props) {
                 <BookShelf title="Read" shelfBooks={getShelfBooks("read")} updateBookShelf={updateBookShelf}/>
             </div>
             <div className="open-search">
-                <Link to="/search">Add a book</Link>
+              <Link to="/search"><button>Add a book</button></Link>
             </div>
         </div>
     )
