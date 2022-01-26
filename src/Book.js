@@ -3,15 +3,15 @@ import BookShelfChanger from "./BookShelfChanger";
 
 class Book extends Component {
     render() {
-        const { title, authors, imgUrl, shelf } = this.props;
+        const { book, updateBookShelf } = this.props;
         return (
             <div className="book">
                 <div className="book-top">
-                    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${imgUrl})` }}></div>
-                    <BookShelfChanger shelf={shelf} />
+                    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})` }}></div>
+                    <BookShelfChanger book={book} shelf={book.shelf} updateBookShelf={updateBookShelf}/>
                 </div>
-                <div className="book-title">{title}</div>
-                <div className="book-authors">{authors}</div>
+                <div className="book-title">{book.title}</div>
+                <div className="book-authors">{book.authors.join(', ')}</div>
             </div>
         )
     }

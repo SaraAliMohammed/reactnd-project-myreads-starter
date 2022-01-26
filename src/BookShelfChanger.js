@@ -10,11 +10,11 @@ const shelfOptions = [
         value: "currentlyReading",
     },
     {
-        label: "Banana",
+        label: "Want to Read",
         value: "wantToRead",
     },
     {
-        label: "Want to Read",
+        label: "Read",
         value: "read",
     },
     {
@@ -24,15 +24,16 @@ const shelfOptions = [
 ];
 
 class BookShelfChanger extends Component {
+    updateBookShelf = (evt) => this.props.updateBookShelf(this.props.book, evt.target.value);
     render() {
         const { shelf } = this.props;
 
         return (
             <div className="book-shelf-changer">
-                <select defaultValue={shelf}>
+                <select defaultValue={shelf} onChange={this.updateBookShelf}>
                     {shelfOptions.map((option) => (
-                        option.value==="move"?<option key={option.value} value={option.value} disabled>{option.label}</option>:
-                        <option key={option.value} value={option.value}>{option.label}</option>
+                        option.value === "move" ? <option key={option.value} value={option.value} disabled>{option.label}</option> :
+                            <option key={option.value} value={option.value}>{option.label}</option>
                     ))}
                 </select>
             </div>
